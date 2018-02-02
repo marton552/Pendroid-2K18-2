@@ -20,6 +20,8 @@ import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyButton;
 import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyLabel;
 import com.hakkatoreinbukuma.game.MyGdxGame;
 import com.hakkatoreinbukuma.game.Screens.About.AboutScreen;
+import com.hakkatoreinbukuma.game.Screens.Game.GameScreen;
+
 public class MenuStage extends MyStage {
 
     private OneSpriteStaticActor logoActor = new OneSpriteStaticActor(Assets.manager.get(Assets.LOGO));
@@ -45,7 +47,7 @@ public class MenuStage extends MyStage {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                //game.setScreen(new GameScreen(game));
+                game.setScreen(new GameScreen(game));
 
             }
         });
