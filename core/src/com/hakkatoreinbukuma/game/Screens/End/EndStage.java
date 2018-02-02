@@ -8,7 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.hakkatoreinbukuma.game.GlobalClasses.Assets;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyStage;
+import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyButton;
 import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyLabel;
 import com.hakkatoreinbukuma.game.MyGdxGame;
@@ -16,6 +18,7 @@ import com.hakkatoreinbukuma.game.Screens.Menu.MenuScreen;
 
 public class EndStage extends MyStage{
 
+    OneSpriteStaticActor bg;
     MyLabel title;
     MyLabel info;
     MyButton back;
@@ -23,6 +26,10 @@ public class EndStage extends MyStage{
 
     public EndStage(Batch batch, final MyGdxGame game, int score, int stars) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
+
+        bg = new OneSpriteStaticActor(Assets.manager.get(Assets.MENU));
+        bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
+        addActor(bg);
 
         title = new MyLabel("LEESETT A LABDA", game.getLabelStyle());
         title.setFontScale(2);

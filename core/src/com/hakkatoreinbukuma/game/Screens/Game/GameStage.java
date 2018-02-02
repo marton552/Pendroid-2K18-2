@@ -90,9 +90,6 @@ public class GameStage extends MyStage {
             }
         });
 
-
-
-
         fanWind.setSize(fanWind.getWidth() / 2, fanWind.getHeight() / 2);
         fanWind.setFps(5);
         fanWind.setLooping(true);

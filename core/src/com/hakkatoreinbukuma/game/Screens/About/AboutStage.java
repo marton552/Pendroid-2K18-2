@@ -15,23 +15,66 @@ import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyButton;
 import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyLabel;
 import com.hakkatoreinbukuma.game.MyGdxGame;
 import com.hakkatoreinbukuma.game.Screens.Menu.MenuScreen;
+import com.hakkatoreinbukuma.game.Screens.Story.StoryScreen;
 
 public class AboutStage extends MyStage{
+
+    OneSpriteStaticActor bg;
+
     MyLabel title;
-    MyLabel label;
+    MyLabel info;
+
+    MyButton story;
+    MyButton menu;
 
     public AboutStage(Batch batch, final MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 
+
+        bg = new OneSpriteStaticActor(Assets.manager.get(Assets.MENU));
+        bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
+
+        addActor(bg);
+
         title = new MyLabel("About", game.getLabelStyle());
         title.setFontScale(2);
-        title.getStyle().fontColor = Color.RED;
         title.setPosition(getViewport().getWorldWidth() / 2 - title.getWidth() / 2 - (title.getWidth() /2),
                 getViewport().getWorldHeight() - title.getHeight() - 50);
         addActor(title);
 
-        label = new MyLabel("ASD", game.getLabelStyle());
+        info = new MyLabel("Tartsd a levegőben a labdát a ventillátorral,\n" +
+                "miközben oldalról szelek fújnak.", game.getLabelStyle());
+        info.setPosition(getViewport().getWorldWidth() / 2 - info.getWidth() / 2,
+                getViewport().getWorldHeight() / 2 - info.getHeight() / 2 + 60);
+        info.setAlignment(Align.center);
 
+        addActor(info);
+
+        story = new MyButton("Történet", game.getButtonStyle());
+        story.setPosition(getViewport().getWorldWidth() / 2 - story.getWidth() / 2, story.getHeight() * 2 + 20);
+
+        story.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                game.setScreen(new StoryScreen(game));
+            }
+        });
+
+        addActor(story);
+
+        menu = new MyButton("Vissza a menübe", game.getButtonStyle());
+        menu.setPosition(getViewport().getWorldWidth() / 2 - story.getWidth() / 2, story.getHeight() + 10);
+
+        menu.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                game.setScreen(new MenuScreen(game));
+            }
+        });
+
+        addActor(menu);
 
     }
 

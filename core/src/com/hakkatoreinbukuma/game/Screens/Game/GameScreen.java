@@ -4,8 +4,11 @@ package com.hakkatoreinbukuma.game.Screens.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.hakkatoreinbukuma.game.GlobalMusic;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyScreen;
 import com.hakkatoreinbukuma.game.MyGdxGame;
+
+import jdk.nashorn.internal.objects.Global;
 
 public class GameScreen extends MyScreen{
 
@@ -25,6 +28,8 @@ public class GameScreen extends MyScreen{
 
         Gdx.input.setInputProcessor(inputMultiplexer);
 
+        GlobalMusic.stopMenuMusic();
+        GlobalMusic.playGameMusic();
     }
 
     @Override

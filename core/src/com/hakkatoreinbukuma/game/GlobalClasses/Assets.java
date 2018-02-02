@@ -73,6 +73,29 @@ public class Assets {
 
 	public static final AssetDescriptor<TextureAtlas> WIND_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/wind.atlas", TextureAtlas.class);
 
+	//Story
+	public static final AssetDescriptor<Texture> FILM1 = new AssetDescriptor<Texture>("story/film1-3.png", Texture.class);
+	public static final AssetDescriptor<Texture> FILM2 = new AssetDescriptor<Texture>("story/film2-4.png", Texture.class);
+	public static final AssetDescriptor<Texture> FILM3 = new AssetDescriptor<Texture>("story/film5.png", Texture.class);
+	public static final AssetDescriptor<Texture> FILM4 = new AssetDescriptor<Texture>("story/film6.png", Texture.class);
+
+	public static final AssetDescriptor<Music> STORY_MUSIC1 = new AssetDescriptor<Music>("story/hang1.wav", Music.class);
+	public static final AssetDescriptor<Music> STORY_MUSIC2 = new AssetDescriptor<Music>("story/hang2.wav", Music.class);
+	public static final AssetDescriptor<Music> STORY_MUSIC3 = new AssetDescriptor<Music>("story/hang3.wav", Music.class);
+	public static final AssetDescriptor<Music> STORY_MUSIC4 = new AssetDescriptor<Music>("story/hang4.wav", Music.class);
+	public static final AssetDescriptor<Music> STORY_MUSIC5 = new AssetDescriptor<Music>("story/hang5.wav", Music.class);
+	public static final AssetDescriptor<Music> NO_MUSIC = new AssetDescriptor<Music>("story/no.wav", Music.class);
+
+	public static final AssetDescriptor<Sound> BTN_SOUND = new AssetDescriptor<Sound>("effects/pickup.mp3", Sound.class);
+
+	//Music
+	public static final AssetDescriptor<Music> MENU_MUSIC = new AssetDescriptor<Music>("music/menu.ogg", Music.class);
+	public static final AssetDescriptor<Music> MUSIC_1 = new AssetDescriptor<Music>("music/1.ogg", Music.class);
+	public static final AssetDescriptor<Music> MUSIC_2 = new AssetDescriptor<Music>("music/2.ogg", Music.class);
+	public static final AssetDescriptor<Music> MUSIC_3 = new AssetDescriptor<Music>("music/3.ogg", Music.class);
+	public static final AssetDescriptor<Music> MUSIC_4 = new AssetDescriptor<Music>("music/4.ogg", Music.class);
+	public static final AssetDescriptor<Music> MUSIC_5 = new AssetDescriptor<Music>("music/5.ogg", Music.class);
+
 
 	public static void prepare() {
 		manager = new AssetManager();
@@ -106,6 +129,27 @@ public class Assets {
 		manager.load(WIND_ATLAS);
 		manager.load(BALL_ATLAS);
 		manager.load(FAN_ATLAS);
+
+		manager.load(FILM1);
+		manager.load(FILM2);
+		manager.load(FILM3);
+		manager.load(FILM4);
+
+		manager.load(STORY_MUSIC1);
+		manager.load(STORY_MUSIC2);
+		manager.load(STORY_MUSIC3);
+		manager.load(STORY_MUSIC4);
+		manager.load(STORY_MUSIC5);
+		manager.load(NO_MUSIC);
+
+		manager.load(MENU_MUSIC);
+		manager.load(MUSIC_1);
+		manager.load(MUSIC_2);
+		manager.load(MUSIC_3);
+		manager.load(MUSIC_4);
+		manager.load(MUSIC_5);
+
+		manager.load(BTN_SOUND);
 
 		manager.load(ALEGREYAREGULAR_FONT);
 
