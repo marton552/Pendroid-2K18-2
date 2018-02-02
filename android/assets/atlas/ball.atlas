@@ -11,43 +11,44 @@ repeat: none
    index: -1
 1
    rotate: false
-   xy: 0, 570
+   xy: 570, 0
    size: 570, 570
    orig: 285, 285
    offset: 0, 0
    index: -1
 2
    rotate: false
-   xy: 0, 1140
+   xy: 1140, 0
    size: 570, 570
    orig: 285, 285
    offset: 0, 0
    index: -1
 3
    rotate: false
-   xy: 0, 1710
+   xy: 1710, 0
    size: 570, 570
    orig: 285, 285
    offset: 0, 0
    index: -1
 4
    rotate: false
-   xy: 0, 2280
+   xy: 2280, 0
    size: 570, 570
    orig: 285, 285
    offset: 0, 0
    index: -1
 5
    rotate: false
-   xy: 0, 2850
+   xy: 2850, 0
    size: 570, 570
    orig: 285, 285
    offset: 0, 0
    index: -1
 6
    rotate: false
-   xy: 0, 3420
+   xy: 3420, 0
    size: 570, 570
    orig: 285, 285
    offset: 0, 0
    index: -1
+
