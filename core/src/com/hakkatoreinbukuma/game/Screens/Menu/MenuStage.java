@@ -20,6 +20,7 @@ import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyButton;
 import com.hakkatoreinbukuma.game.MyBaseClasses.UI.MyLabel;
 import com.hakkatoreinbukuma.game.MyGdxGame;
 import com.hakkatoreinbukuma.game.Screens.About.AboutScreen;
+import com.hakkatoreinbukuma.game.Screens.End.EndScreen;
 import com.hakkatoreinbukuma.game.Screens.Game.GameScreen;
 
 public class MenuStage extends MyStage {
@@ -32,6 +33,10 @@ public class MenuStage extends MyStage {
     public MenuStage(Batch batch, final MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 
+        OneSpriteStaticActor bg = new OneSpriteStaticActor(Assets.manager.get(Assets.MENU));
+        bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
+        addActor(bg);
+
         //logoActor.setSize(logoActor.getWidth(), logoActor.getHeight());
         centerXLogo = getViewport().getWorldWidth() / 2 - logoActor.getWidth() / 2;
         centerYLogo = getViewport().getWorldHeight() - logoActor.getHeight() + 50;
@@ -40,7 +45,7 @@ public class MenuStage extends MyStage {
 
 
         MyButton playButton = new MyButton("Play", game.getButtonStyle());
-        playButton.setPosition(getViewport().getWorldWidth() / 2 - playButton.getWidth() / 2, getViewport().getWorldHeight() - 360);
+        playButton.setPosition(50, getViewport().getWorldHeight() - 360);
 
         playButton.addListener(new ClickListener(){
 
@@ -48,12 +53,13 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 game.setScreen(new GameScreen(game));
+                //game.setScreen(new EndScreen(game, 10000, 16));
 
             }
         });
 
         MyButton aboutButton = new MyButton("About", game.getButtonStyle());
-        aboutButton.setPosition(getViewport().getWorldWidth() / 2 - playButton.getWidth() / 2, getViewport().getWorldHeight() - 420);
+        aboutButton.setPosition(50, getViewport().getWorldHeight() - 420);
 
         aboutButton.addListener(new ClickListener(){
             @Override
@@ -64,7 +70,7 @@ public class MenuStage extends MyStage {
         });
 
         MyButton quitButton = new MyButton("Quit", game.getButtonStyle());
-        quitButton.setPosition(getViewport().getWorldWidth() / 2 - playButton.getWidth() / 2, getViewport().getWorldHeight() - 480);
+        quitButton.setPosition(50, getViewport().getWorldHeight() - 480);
 
         quitButton.addListener(new ClickListener(){
             @Override

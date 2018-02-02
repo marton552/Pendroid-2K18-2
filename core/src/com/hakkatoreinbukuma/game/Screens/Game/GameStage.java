@@ -12,24 +12,38 @@ import com.hakkatoreinbukuma.game.GlobalClasses.Assets;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyStage;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.hakkatoreinbukuma.game.MyGdxGame;
+import com.hakkatoreinbukuma.game.Screens.End.EndScreen;
 
 import java.util.Random;
 
 public class GameStage extends MyStage {
 
-    Fan fan;
+
+    MyGdxGame game;
+
+    public Ball ball;
+    public Fan fan;
 
     float strength;
     int strengthLasts;
+
     int strengthTick = 0;
 
     boolean windBlowing = false;
-
     int nextWind = 0;
     boolean startWindTick = false;
+
     int windTick = 0;
 
     public int SCORE = 0;
+    public int STARS = 0;
+
+    Star star;
+    boolean isStar = false;
+    int starTick = 0;
+    int nextStar = 1000;
+    int starLasts = 100;
+
 
     Random r = new Random();
 
@@ -38,8 +52,11 @@ public class GameStage extends MyStage {
     OneSpriteStaticActor bg;
 
 
+
     public GameStage(Batch batch, MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
+
+        this.game = game;
 
         bg = new OneSpriteStaticActor(Assets.manager.get(Assets.GAME_BG));
         bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
@@ -100,7 +117,7 @@ public class GameStage extends MyStage {
             }
         }
 
-        if(!timerIsOn) {
+        if(!timerIsOn) { // Score számláló
             timerIsOn = true;
 
             Timer.schedule(new Timer.Task() {
@@ -114,6 +131,20 @@ public class GameStage extends MyStage {
             }, 1);
 
         }
+
+        //Star létrehozása majd eltünése.
+
+
+
+        //End Game
+        //A labda a képernyőn kívül van-e?
+
+        /*if(ball.getX() >= getViewport().getWorldWidth() || ball.getX() + ball.getWidth() <= 0
+                || ball.getY() + ball.getHeight() < 0 || ball.getY() >= getViewport().getWorldHeight()) {
+
+            game.setScreen(new EndScreen(game, SCORE, STARS));
+
+        }*/
 
 
     }
