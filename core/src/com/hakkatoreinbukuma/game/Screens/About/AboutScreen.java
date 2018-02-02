@@ -1,6 +1,7 @@
 package com.hakkatoreinbukuma.game.Screens.About;
 
 import com.badlogic.gdx.Gdx;
+import com.hakkatoreinbukuma.game.GlobalMusic;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyScreen;
 import com.hakkatoreinbukuma.game.MyGdxGame;
 
@@ -14,6 +15,8 @@ public class AboutScreen extends MyScreen {
         aboutStage = new AboutStage(spriteBatch, game);
 
         Gdx.input.setInputProcessor(aboutStage);
+
+        GlobalMusic.startMenuMusic();
     }
 
     @Override

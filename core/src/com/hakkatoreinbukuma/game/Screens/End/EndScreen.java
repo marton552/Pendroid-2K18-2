@@ -1,8 +1,11 @@
 package com.hakkatoreinbukuma.game.Screens.End;
 
 import com.badlogic.gdx.Gdx;
+import com.hakkatoreinbukuma.game.GlobalMusic;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyScreen;
 import com.hakkatoreinbukuma.game.MyGdxGame;
+
+import jdk.nashorn.internal.objects.Global;
 
 public class EndScreen extends MyScreen {
 
@@ -14,6 +17,9 @@ public class EndScreen extends MyScreen {
         endStage = new EndStage(spriteBatch, game, score, stars);
 
         Gdx.input.setInputProcessor(endStage);
+
+        GlobalMusic.stopGameMusic();
+        GlobalMusic.startMenuMusic();
     }
 
     @Override
