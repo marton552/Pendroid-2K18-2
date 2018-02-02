@@ -6,5 +6,8 @@ import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteAnimatedActor;
 public class Ball extends OneSpriteAnimatedActor{
     public Ball(TextureAtlas textureAtlas) {
         super(textureAtlas);
+        setLooping(true);
+
     }
+
 }
