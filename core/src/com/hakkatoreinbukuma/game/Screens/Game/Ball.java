@@ -25,9 +25,15 @@ public class Ball extends OneSpriteAnimatedActor{
         forces.clear();
     }
 
-    public Vector2 raycast(Vector2 startPoint, Vector2 direction){
-        Vector2 invStartPoint = new Vector2();
-        invStartPoint.setZero();
+    public Vector2 raycast(Vector2 rayOrigin, Vector2 rayDirection){
+        Vector2 rayEnd = rayOrigin.add(rayDirection);
+        double dR = Math.sqrt(Math.pow(rayDirection.x, 2) + Math.pow(rayDirection.y, 2));
+        double d = rayEnd.x * rayOrigin.y - rayOrigin.x * rayEnd.y;
+        double discriminant = Math.pow(radius, 2) - Math.pow(dR, 2) - Math.pow(d, 2);
+
+        if(discriminant < 0) System.out.println("Nem érinti");
+        else if(discriminant == 0) System.out.println("Érinti");
+        else System.out.println("Átmegy rajta");
 
         return null;
     }
@@ -37,8 +43,9 @@ public class Ball extends OneSpriteAnimatedActor{
         return null;
     }
 
-    public void shift(Vector2 vector){
-        //super.setPosition(vector[0], vector[1]);
+    public void shift(Vector2 vector) {
+        position = position.add(vector);
+        super.setPosition(position.x, position.y);
     }
 
     public void addForce(Vector2 force) {
