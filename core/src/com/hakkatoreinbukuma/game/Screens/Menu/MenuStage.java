@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hakkatoreinbukuma.game.GlobalClasses.Assets;
+import com.hakkatoreinbukuma.game.GlobalMusic;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyActor;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyStage;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
@@ -22,10 +23,12 @@ import com.hakkatoreinbukuma.game.MyGdxGame;
 import com.hakkatoreinbukuma.game.Screens.About.AboutScreen;
 import com.hakkatoreinbukuma.game.Screens.End.EndScreen;
 import com.hakkatoreinbukuma.game.Screens.Game.GameScreen;
+import com.hakkatoreinbukuma.game.Screens.Story.StoryScreen;
 
 public class MenuStage extends MyStage {
 
     private OneSpriteStaticActor logoActor = new OneSpriteStaticActor(Assets.manager.get(Assets.LOGO));
+    MyButton story;
 
 
     public MenuStage(Batch batch, final MyGdxGame game) {
@@ -49,13 +52,27 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 game.setScreen(new GameScreen(game));
+                GlobalMusic.stopMenuMusic();
                 //game.setScreen(new EndScreen(game, 10000, 16));
 
             }
         });
 
+        story = new MyButton("Történet", game.getButtonStyle());
+        story.setPosition(50, getViewport().getWorldHeight() - 420);
+
+        story.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                game.setScreen(new StoryScreen(game));
+            }
+        });
+
+        addActor(story);
+
         MyButton aboutButton = new MyButton("About", game.getButtonStyle());
-        aboutButton.setPosition(50, getViewport().getWorldHeight() - 420);
+        aboutButton.setPosition(50, getViewport().getWorldHeight() - 480);
 
         aboutButton.addListener(new ClickListener(){
             @Override
@@ -66,7 +83,7 @@ public class MenuStage extends MyStage {
         });
 
         MyButton quitButton = new MyButton("Quit", game.getButtonStyle());
-        quitButton.setPosition(50, getViewport().getWorldHeight() - 480);
+        quitButton.setPosition(50, getViewport().getWorldHeight() - 540);
 
         quitButton.addListener(new ClickListener(){
             @Override

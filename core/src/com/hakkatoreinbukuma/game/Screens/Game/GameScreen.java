@@ -28,8 +28,8 @@ public class GameScreen extends MyScreen{
 
         Gdx.input.setInputProcessor(inputMultiplexer);
 
-        GlobalMusic.stopMenuMusic();
         GlobalMusic.playGameMusic();
+        GlobalMusic.stopMenuMusic();
     }
 
     @Override

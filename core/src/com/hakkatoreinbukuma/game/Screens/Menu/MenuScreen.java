@@ -15,7 +15,8 @@ public class MenuScreen extends MyScreen{
         menuStage = new MenuStage(spriteBatch, game);
         Gdx.input.setInputProcessor(menuStage);
 
-        GlobalMusic.playGameMusic();
+        GlobalMusic.stopGameMusic();
+        GlobalMusic.startMenuMusic();
 
     }
 

@@ -2,6 +2,7 @@ package com.hakkatoreinbukuma.game.MyBaseClasses;
 
 import com.badlogic.gdx.Gdx;
 import com.hakkatoreinbukuma.game.GlobalClasses.Assets;
+import com.hakkatoreinbukuma.game.Screens.Copyright.CopyrightScreen;
 import com.hakkatoreinbukuma.game.Screens.Menu.MenuScreen;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyScreen;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteAnimatedActor;
@@ -25,7 +26,7 @@ public class TitleScreen extends MyScreen{
             title.act(delta);
         spriteBatch.end();
         if(!title.isRunning()){
-            game.setScreen(new MenuScreen(game));
+            game.setScreen(new CopyrightScreen(game));
         }
 
     }
