@@ -33,6 +33,7 @@ public class Ball extends OneSpriteAnimatedActor{
     }
 
     public Vector2 getSurfaceNormal(){
+
         return null;
     }
 
