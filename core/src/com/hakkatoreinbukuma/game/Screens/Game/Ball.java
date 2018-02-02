@@ -31,7 +31,9 @@ public class Ball extends OneSpriteAnimatedActor{
     @Override
     public void act(float delta) {
         super.act(delta);
-        raycast(new Vector2(0, 0), new Vector2(600, 500));
+        Vector2 windPos = new Vector2(0, 0);
+        Vector2 windDir = new Vector2(300, 700);
+        raycast(windPos, windDir);
     }
 
     public void setPosition(float x, float y){
@@ -43,7 +45,10 @@ public class Ball extends OneSpriteAnimatedActor{
     }
 
     public Vector2 raycast(Vector2 rayOrigin, Vector2 rayDirection){
-        Vector2 intersection = lineIntersection(rayOrigin, rayOrigin.add(rayDirection), position);
+        System.out.println(rayOrigin.x + " " + rayOrigin.y);
+        Vector2 rayDir = (new Vector2(rayOrigin)).add(rayDirection);
+        System.out.println(rayOrigin.x + " " + rayOrigin.y);
+        Vector2 intersection = lineIntersection(rayOrigin, rayDir, position);
         if((intersection) == null) System.out.println("Nincs ütközés");
         else System.out.println("Ütközés (" + intersection.x + " " + intersection.y + ") pontnál");
         return null;
@@ -77,25 +82,22 @@ public class Ball extends OneSpriteAnimatedActor{
     }
 
     public Vector2 lineIntersection(Vector2 a, Vector2 b, Vector2 circle) {
+        System.out.println("Intersection test: " + a.x + " " + a.y + " " + b.x + " " + b.y + " " + circle.x + " " + circle.y);
         if (pointCircleCollision(a, circle, radius)) return a;
         if (pointCircleCollision(b, circle, radius)) return b;
 
         Vector2 d = b.sub(a);
         Vector2 lc = circle.sub(a);
 
-        float dLen2 = d.x * d.x + d.y * d.y;
         Vector2 p = d;
-        if (dLen2 > 0) {
-            float dp = (lc.x * d.x + lc.y * d.y) / dLen2;
+        if (d.len2() > 0) {
+            float dp = (lc.x * d.x + lc.y * d.y) / d.len2();
             p = p.scl(dp);
         }
 
         Vector2 nearest = a.add(p);
 
-        float pLen2 = p.x * p.x + p.y * p.y;
-
-        if(pointCircleCollision(nearest, circle, radius) && pLen2 <= dLen2 && (p.x * d.x + p.y * d.y) >= 0) return nearest;
+        if(pointCircleCollision(nearest, circle, radius) && p.len2() <= d.len2() && (p.x * d.x + p.y * d.y) >= 0) return nearest;
         else return null;
     }
-
 }

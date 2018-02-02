@@ -77,7 +77,7 @@ public class GameStage extends MyStage {
             @Override
             public void drag(InputEvent event, float x, float y, int pointer) {
                 super.drag(event, x, y, pointer);
-                fan.setX(x - fan.getWidth() / 2);
+                ball.setPosition(x - ball.getWidth() / 2, ball.getY());
                 fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
             }
 
@@ -85,7 +85,7 @@ public class GameStage extends MyStage {
             public void dragStart(InputEvent event, float x, float y, int pointer) {
                 super.dragStart(event, x, y, pointer);
 
-                fan.setX(x - fan.getWidth() / 2);
+                ball.setPosition(x - ball.getWidth() / 2, ball.getY());
                 fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
             }
         });
