@@ -39,8 +39,7 @@ public class EndStage extends MyStage{
         addActor(title);
 
         info = new MyLabel(score+" másodpercig tudtad\n" +
-                "levegőbe tartani a labdát\n" +
-                "Felvett csillagok: "+stars+" db", game.getLabelStyle());
+                "levegőbe tartani a labdát.", game.getLabelStyle());
         info.setPosition(getViewport().getWorldWidth() / 2 - info.getWidth() / 2,
                         getViewport().getWorldHeight() / 2 - info.getHeight() / 2);
         info.setAlignment(Align.center);
