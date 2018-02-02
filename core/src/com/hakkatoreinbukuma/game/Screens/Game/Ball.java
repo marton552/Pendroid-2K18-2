@@ -14,6 +14,17 @@ public class Ball extends OneSpriteAnimatedActor{
     Vector2 position;
     ArrayList<ArrayList<Vector2>> winds;
 
+    public void addWind(Vector2 position, Vector2 direction) {
+        ArrayList<Vector2> wind = new ArrayList<Vector2>();
+        wind.add(position);
+        wind.add(direction);
+        winds.add(wind);
+    }
+    public void setWind(int index, Vector2 position, Vector2 direction) {
+        winds.get(index).set(0, position);
+        winds.get(index).set(1, direction);
+    }
+
     public Ball(TextureAtlas textureAtlas) {
         super(textureAtlas);
         setSize(getWidth() / 6, getHeight() / 6);
@@ -22,11 +33,6 @@ public class Ball extends OneSpriteAnimatedActor{
         winds = new ArrayList<ArrayList<Vector2>>();
         position = new Vector2(super.getX() + super.getWidth() / 2, super.getY() + super.getHeight() / 2);
         velocity = new Vector2(0, 0);
-
-        ArrayList<Vector2> wind1 = new ArrayList<Vector2>();
-        wind1.add(new Vector2(200, 0));
-        wind1.add(new Vector2(0, 800));
-        winds.add(wind1);
     }
 
     @Override
@@ -40,14 +46,16 @@ public class Ball extends OneSpriteAnimatedActor{
         super.act(delta);
         forces.clear();
         for(ArrayList<Vector2> wind : winds){
-            Vector2 windForce = raycast(wind.get(0), wind.get(1));
+            Vector2 windForce = raycast(wind.get(0), wind.get(1), 1.8f);
             if(windForce != null) forces.add(windForce);
         }
 
         Vector2 direction = new Vector2(0, 0);
+        forces.add(new Vector2(0f, -5f));
         for(Vector2 force : forces){
             direction.add(force);
         }
+        System.out.println(direction.x + " " + direction.y);
         shift(direction);
     }
 
@@ -56,19 +64,22 @@ public class Ball extends OneSpriteAnimatedActor{
         position.set(super.getX() + super.getWidth() / 2, super.getY() + super.getHeight() / 2);
     }
 
-    public Vector2 raycast(Vector2 rayOrigin, Vector2 rayDirection){
+    public Vector2 raycast(Vector2 rayOrigin, Vector2 rayDirection, float force){
         Vector2 rayDir = (new Vector2(rayOrigin)).add(rayDirection);
         Vector2 intersection = lineIntersection(rayOrigin, rayDir, new Vector2(position));
-        if((intersection) == null) System.out.println("Nincs ütközés");
-        else {
+        if(intersection != null) {
             Vector2 normal = getCircleNormal(position, intersection);
             double radwidth = (2 * Math.PI) / (getWidth());
             System.out.println(radwidth);
             normal.y -= ((float)Math.cos(radwidth * (normal.x / 2)) / radwidth);
 
-            Vector2 forceVector = new Vector2(1, 0).rotate(-normal.angle());
+            Vector2 forceVector = new Vector2(force, 0).rotate(-normal.angle());
             forceVector.x *= -1;
-            //forceVector = forceVector.scl(/*interpolate wind vector*/);
+
+            //Vector2 intersectionPoint = new Vector2(normal).add(position);
+            //intersectionPoint = intersectionPoint.sub(rayOrigin);
+            //float mForce = Math.max(rayDirection.len() - intersectionPoint.len(), 0.0f);
+
             return forceVector;
         }
         return null;

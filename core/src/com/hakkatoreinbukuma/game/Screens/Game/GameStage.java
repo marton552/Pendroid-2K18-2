@@ -44,6 +44,7 @@ public class GameStage extends MyStage {
     int nextStar = 1000;
     int starLasts = 100;
 
+    final OneSpriteAnimatedActor fanWind;
 
     Random r = new Random();
 
@@ -63,44 +64,49 @@ public class GameStage extends MyStage {
 
         addActor(bg);
 
+        fanWind = new OneSpriteAnimatedActor(Assets.manager.get(Assets.WIND_ATLAS));
+        fan = new Fan();
+        fanWind.setSize(fanWind.getWidth() / 6, fanWind.getHeight() / 6);
+        fanWind.setFps(5);
+        fanWind.setLooping(true);
+        fanWind.setRotation(90);
+        fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
+
         ball = new Ball(Assets.manager.get(Assets.BALL_ATLAS));
         ball.setPosition(500, 300);
         ball.setFps(10);
+        for(int i = 0; i <= 20; i++) ball.addWind(new Vector2(200, 0), new Vector2(0, 800));
         addActor(ball);
-
-        final OneSpriteAnimatedActor fanWind = new OneSpriteAnimatedActor(Assets.manager.get(Assets.WIND_ATLAS));
-
-        fan = new Fan();
 
         addListener(new DragListener(){
 
             @Override
             public void drag(InputEvent event, float x, float y, int pointer) {
                 super.drag(event, x, y, pointer);
-                ball.setPosition(x - ball.getWidth() / 2, ball.getY());
-                fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
+                dragHandler(x, y);
             }
 
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
                 super.dragStart(event, x, y, pointer);
-
-                ball.setPosition(x - ball.getWidth() / 2, ball.getY());
-                fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
+                dragHandler(x, y);
             }
         });
-
-        fanWind.setSize(fanWind.getWidth() / 2, fanWind.getHeight() / 2);
-        fanWind.setFps(5);
-        fanWind.setLooping(true);
-        fanWind.setRotation(90);
-        fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
 
         addActor(fan);
         addActor(fanWind);
 
         generateWind();
 
+    }
+
+    public void dragHandler(float x, float y){
+        fan.setPosition(x - fan.getWidth() / 2, fan.getY());
+        fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
+        for(int i = 0; i <= 20; i++) {
+            float size = fan.getWidth() / 20;
+            ball.setWind(i, new Vector2(fan.getX() - fan.getWidth() / 5 + (size * i), fan.getY() + fan.getHeight() / 2), new Vector2(0, 800));
+        }
     }
 
     @Override
