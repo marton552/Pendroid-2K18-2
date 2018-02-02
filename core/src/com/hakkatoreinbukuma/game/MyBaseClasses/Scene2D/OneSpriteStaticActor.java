@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  */
 public class OneSpriteStaticActor extends OneSpriteActor {
 
-    public float damage = 0;
-
     public OneSpriteStaticActor(String file) {
         super(new Sprite(new Texture(file)));
     }
