@@ -64,12 +64,12 @@ public class GameStage extends MyStage {
 
         addActor(bg);
 
-        ball = new Ball(Assets.manager.get(Assets.WIND_ATLAS));
+        ball = new Ball(Assets.manager.get(Assets.BALL_ATLAS));
         ball.setPosition(500, 500);
         ball.setFps(10);
         addActor(ball);
 
-        final OneSpriteAnimatedActor fanWind = new OneSpriteAnimatedActor(Assets.manager.get(Assets.TITLE_ATLAS));
+        final OneSpriteAnimatedActor fanWind = new OneSpriteAnimatedActor(Assets.manager.get(Assets.WIND_ATLAS));
 
         fan = new Fan();
 
@@ -94,10 +94,10 @@ public class GameStage extends MyStage {
 
 
 
-        //fanWind.setSize(fanWind.getWidth() / 2, fanWind.getHeight() / 2);
+        fanWind.setSize(fanWind.getWidth() / 2, fanWind.getHeight() / 2);
         fanWind.setFps(5);
         fanWind.setLooping(true);
-        //fanWind.setRotation(90);
+        fanWind.setRotation(90);
         fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
 
         addActor(fan);
