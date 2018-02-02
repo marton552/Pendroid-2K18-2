@@ -27,8 +27,6 @@ public class MenuStage extends MyStage {
 
     private OneSpriteStaticActor logoActor = new OneSpriteStaticActor(Assets.manager.get(Assets.LOGO));
 
-    float centerXLogo;
-    float centerYLogo;
 
     public MenuStage(Batch batch, final MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
@@ -37,11 +35,9 @@ public class MenuStage extends MyStage {
         bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
         addActor(bg);
 
-        //logoActor.setSize(logoActor.getWidth(), logoActor.getHeight());
-        centerXLogo = getViewport().getWorldWidth() / 2 - logoActor.getWidth() / 2;
-        centerYLogo = getViewport().getWorldHeight() - logoActor.getHeight() + 50;
+        logoActor.setSize(logoActor.getWidth() / 2, logoActor.getHeight() / 2);
 
-        logoActor.setPosition(centerXLogo, centerYLogo);
+        logoActor.setPosition(30, getViewport().getWorldHeight() - logoActor.getHeight() - 50);
 
 
         MyButton playButton = new MyButton("Play", game.getButtonStyle());
@@ -98,14 +94,5 @@ public class MenuStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
 
-        float x = centerXLogo + (Gdx.input.getAccelerometerY()) * delta * 40;
-        if(x <= centerXLogo + 40 && x > centerXLogo - 40) {
-            logoActor.setX(x);
-        }
-
-        float y = centerYLogo + (((Gdx.input.getAccelerometerX()) * delta * 20) * -1);
-        if(y <= centerYLogo + 20 && y > centerYLogo - 20) {
-            logoActor.setY(y);
-        }
     }
 }

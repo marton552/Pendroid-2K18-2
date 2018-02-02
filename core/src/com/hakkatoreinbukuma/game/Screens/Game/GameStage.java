@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hakkatoreinbukuma.game.GlobalClasses.Assets;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyStage;
+import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteAnimatedActor;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.hakkatoreinbukuma.game.MyGdxGame;
 import com.hakkatoreinbukuma.game.Screens.End.EndScreen;
@@ -50,7 +51,7 @@ public class GameStage extends MyStage {
     boolean timerIsOn = false;
 
     OneSpriteStaticActor bg;
-
+    //OneSpriteAnimatedActor fanWind;
 
 
     public GameStage(Batch batch, MyGdxGame game) {
@@ -63,10 +64,12 @@ public class GameStage extends MyStage {
 
         addActor(bg);
 
-        ball = new Ball(Assets.manager.get(Assets.BALL_ATLAS));
+        ball = new Ball(Assets.manager.get(Assets.WIND_ATLAS));
         ball.setPosition(500, 500);
-        ball.setFps(5);
+        ball.setFps(10);
         addActor(ball);
+
+        final OneSpriteAnimatedActor fanWind = new OneSpriteAnimatedActor(Assets.manager.get(Assets.TITLE_ATLAS));
 
         fan = new Fan();
 
@@ -76,7 +79,7 @@ public class GameStage extends MyStage {
             public void drag(InputEvent event, float x, float y, int pointer) {
                 super.drag(event, x, y, pointer);
                 fan.setX(x - fan.getWidth() / 2);
-
+                fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
             }
 
             @Override
@@ -84,11 +87,21 @@ public class GameStage extends MyStage {
                 super.dragStart(event, x, y, pointer);
 
                 fan.setX(x - fan.getWidth() / 2);
+                fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
             }
         });
 
-        addActor(fan);
 
+
+
+        //fanWind.setSize(fanWind.getWidth() / 2, fanWind.getHeight() / 2);
+        fanWind.setFps(5);
+        fanWind.setLooping(true);
+        //fanWind.setRotation(90);
+        fanWind.setPosition(fan.getX(), fan.getY() + fan.getHeight() + 10);
+
+        addActor(fan);
+        addActor(fanWind);
 
         generateWind();
 

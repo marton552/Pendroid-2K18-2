@@ -49,6 +49,8 @@ public class Assets {
 	//public static final AssetDescriptor<Texture> BG_TEXTURE = new AssetDescriptor<Texture>("back2.png", Texture.class);
 	public static final AssetDescriptor<Texture> MENU = new AssetDescriptor<Texture>("menu.png", Texture.class);
 	public static final AssetDescriptor<Texture> GAME_BG = new AssetDescriptor<Texture>("bg.png", Texture.class);
+	public static final AssetDescriptor<Texture> MENU_ICON = new AssetDescriptor<Texture>("menu_icon.png", Texture.class);
+
 
 	public static final AssetDescriptor<TextureAtlas> TITLE_ATLAS = new AssetDescriptor<TextureAtlas>("atlasok/opening.atlas", TextureAtlas.class);
 
@@ -67,8 +69,9 @@ public class Assets {
 	public static final AssetDescriptor<Texture> LOGO = new AssetDescriptor<Texture>("logo.png", Texture.class);
 
 	public static final AssetDescriptor<TextureAtlas> BALL_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/ball.atlas", TextureAtlas.class);
+	public static final AssetDescriptor<TextureAtlas> FAN_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/fan.atlas", TextureAtlas.class);
 
-
+	public static final AssetDescriptor<TextureAtlas> WIND_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/wind.atlas", TextureAtlas.class);
 
 
 	public static void prepare() {
@@ -84,6 +87,7 @@ public class Assets {
 
 		manager.load(GAME_BG);
 		manager.load(MENU);
+		manager.load(MENU_ICON);
 
 		manager.load(TITLE_ATLAS);
 
@@ -99,7 +103,9 @@ public class Assets {
 
 		manager.load(LOGO);
 
+		manager.load(WIND_ATLAS);
 		manager.load(BALL_ATLAS);
+		manager.load(FAN_ATLAS);
 
 		manager.load(ALEGREYAREGULAR_FONT);
 
