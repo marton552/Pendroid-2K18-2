@@ -12,7 +12,9 @@ import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyStage;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteAnimatedActor;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.hakkatoreinbukuma.game.MyGdxGame;
+import com.hakkatoreinbukuma.game.Screens.Copyright.CopyrightScreen;
 import com.hakkatoreinbukuma.game.Screens.End.EndScreen;
+import com.hakkatoreinbukuma.game.Screens.GameOverScreen;
 
 import java.util.Random;
 
@@ -162,7 +164,7 @@ public class GameStage extends MyStage {
         if(ball.getX() >= getViewport().getWorldWidth() || ball.getX() + ball.getWidth() <= 0
                 || ball.getY() + ball.getHeight() < 0 || ball.getY() >= getViewport().getWorldHeight()) {
 
-            game.setScreen(new EndScreen(game, SCORE, STARS));
+            game.setScreen(new GameOverScreen(game, SCORE));
         }
 
 

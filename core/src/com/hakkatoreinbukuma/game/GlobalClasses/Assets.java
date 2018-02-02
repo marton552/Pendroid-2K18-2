@@ -78,6 +78,8 @@ public class Assets {
 	public static final AssetDescriptor<TextureAtlas> FAN_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/fan.atlas", TextureAtlas.class);
 
 	public static final AssetDescriptor<TextureAtlas> WIND_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/wind.atlas", TextureAtlas.class);
+	public static final AssetDescriptor<TextureAtlas> OVER_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/gameover.atlas", TextureAtlas.class);
+
 
 	//Story
 	public static final AssetDescriptor<Texture> FILM1 = new AssetDescriptor<Texture>("story/film1-3.png", Texture.class);
@@ -161,6 +163,8 @@ public class Assets {
 		manager.load(SPONSOR);
 
 		manager.load(BTN_SOUND);
+
+		manager.load(OVER_ATLAS);
 
 		manager.load(ALEGREYAREGULAR_FONT);
 
