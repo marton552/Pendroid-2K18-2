@@ -26,6 +26,8 @@ public class GameStage extends MyStage {
     boolean startWindTick = false;
     int windTick = 0;
 
+    public int SCORE = 0;
+
     Random r = new Random();
 
 
