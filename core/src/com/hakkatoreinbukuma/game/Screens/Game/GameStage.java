@@ -64,7 +64,7 @@ public class GameStage extends MyStage {
         addActor(bg);
 
         ball = new Ball(Assets.manager.get(Assets.BALL_ATLAS));
-        ball.setPosition(500, 500);
+        ball.setPosition(500, 300);
         ball.setFps(10);
         addActor(ball);
 
@@ -205,7 +205,7 @@ public class GameStage extends MyStage {
 
         Vector2 dir = point.scl(r.nextInt(300));
 
-        ball.addForce(dir);
+        //ball.addForce(dir);
 
 
     }
