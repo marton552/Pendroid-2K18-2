@@ -5,9 +5,12 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.hakkatoreinbukuma.game.GlobalClasses.Assets;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.MyStage;
+import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.hakkatoreinbukuma.game.MyGdxGame;
 
 import java.util.Random;
@@ -30,22 +33,40 @@ public class GameStage extends MyStage {
 
     Random r = new Random();
 
+    boolean timerIsOn = false;
+
+    OneSpriteStaticActor bg;
+
 
     public GameStage(Batch batch, MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 
+        bg = new OneSpriteStaticActor(Assets.manager.get(Assets.GAME_BG));
+        bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
+
+        addActor(bg);
+
         fan = new Fan();
 
         addListener(new DragListener(){
+
+            @Override
+            public void drag(InputEvent event, float x, float y, int pointer) {
+                super.drag(event, x, y, pointer);
+                fan.setX(x - fan.getWidth() / 2);
+
+            }
+
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
                 super.dragStart(event, x, y, pointer);
 
-                fan.setX(x - fan.getWidth());
+                fan.setX(x - fan.getWidth() / 2);
             }
         });
 
         addActor(fan);
+
 
         generateWind();
 
@@ -77,6 +98,21 @@ public class GameStage extends MyStage {
                 if(strength <= 0)
                     destroyWind();
             }
+        }
+
+        if(!timerIsOn) {
+            timerIsOn = true;
+
+            Timer.schedule(new Timer.Task() {
+
+                @Override
+                public void run() {
+                    SCORE += 1;
+                    timerIsOn = false;
+                }
+
+            }, 1);
+
         }
 
 
