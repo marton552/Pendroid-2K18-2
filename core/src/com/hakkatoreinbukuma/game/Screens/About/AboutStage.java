@@ -24,6 +24,8 @@ public class AboutStage extends MyStage{
     MyLabel title;
     MyLabel info;
 
+    OneSpriteStaticActor sponsor;
+
     MyButton menu;
 
     public AboutStage(Batch batch, final MyGdxGame game) {
@@ -49,6 +51,10 @@ public class AboutStage extends MyStage{
 
         addActor(info);
 
+        sponsor = new OneSpriteStaticActor(Assets.manager.get(Assets.SPONSOR));
+        sponsor.setSize(sponsor.getWidth() / 4, sponsor.getHeight() / 4);
+        sponsor.setPosition(10, getViewport().getWorldHeight() - sponsor.getHeight() - 10);
+        addActor(sponsor);
 
         menu = new MyButton("Vissza a menübe", game.getButtonStyle());
         menu.setPosition(getViewport().getWorldWidth() / 2 - menu.getWidth() / 2, menu.getHeight() + 10);
