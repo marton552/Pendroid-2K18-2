@@ -65,6 +65,7 @@ public class GameStage extends MyStage {
 
         ball = new Ball(Assets.manager.get(Assets.BALL_ATLAS));
         ball.setPosition(500, 500);
+        ball.setFps(5);
         addActor(ball);
 
         fan = new Fan();
@@ -191,6 +192,8 @@ public class GameStage extends MyStage {
         Vector2 point2 = new Vector2(0, 200);
 
         Vector2 dir = point.scl(r.nextInt(300));
+
+        ball.addForce(dir);
 
 
     }

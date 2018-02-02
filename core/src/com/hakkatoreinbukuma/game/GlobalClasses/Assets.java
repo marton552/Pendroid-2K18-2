@@ -50,7 +50,7 @@ public class Assets {
 	public static final AssetDescriptor<Texture> MENU = new AssetDescriptor<Texture>("menu.png", Texture.class);
 	public static final AssetDescriptor<Texture> GAME_BG = new AssetDescriptor<Texture>("bg.png", Texture.class);
 
-	public static final AssetDescriptor<TextureAtlas> TITLE_ATLAS = new AssetDescriptor<TextureAtlas>("atlasok/title.atlas", TextureAtlas.class);
+	public static final AssetDescriptor<TextureAtlas> TITLE_ATLAS = new AssetDescriptor<TextureAtlas>("atlasok/opening.atlas", TextureAtlas.class);
 
 	//Button
 	public static final AssetDescriptor<Texture> BTN_BACK = new AssetDescriptor<Texture>("ui_textures/btn_back.png", Texture.class);
