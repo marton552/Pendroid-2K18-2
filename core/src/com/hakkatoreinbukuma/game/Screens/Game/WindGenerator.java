@@ -1,7 +1,6 @@
 package com.hakkatoreinbukuma.game.Screens.Game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Matrix3;
 import com.badlogic.gdx.math.Vector2;
 import com.hakkatoreinbukuma.game.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
