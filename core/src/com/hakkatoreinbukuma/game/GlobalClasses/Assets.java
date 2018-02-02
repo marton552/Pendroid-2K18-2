@@ -68,6 +68,9 @@ public class Assets {
 
 	public static final AssetDescriptor<Texture> LOGO = new AssetDescriptor<Texture>("logo.png", Texture.class);
 
+	public static final AssetDescriptor<Texture> STAR = new AssetDescriptor<Texture>("star.png", Texture.class);
+
+
 	public static final AssetDescriptor<TextureAtlas> BALL_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/ball.atlas", TextureAtlas.class);
 	public static final AssetDescriptor<TextureAtlas> FAN_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/fan.atlas", TextureAtlas.class);
 
@@ -129,6 +132,8 @@ public class Assets {
 		manager.load(WIND_ATLAS);
 		manager.load(BALL_ATLAS);
 		manager.load(FAN_ATLAS);
+
+		manager.load(STAR);
 
 		manager.load(FILM1);
 		manager.load(FILM2);

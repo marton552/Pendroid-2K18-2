@@ -18,6 +18,7 @@ public class GlobalMusic {
 
     public static void startMenuMusic() {
         if(!menuPlaying) {
+            System.out.println("PLAY MENU MUSIC");
             menu = Assets.manager.get(Assets.MENU_MUSIC);
             menu.play();
             menu.setLooping(true);
@@ -28,14 +29,17 @@ public class GlobalMusic {
     public static void stopMenuMusic() {
         if (menuPlaying) {
             menu.stop();
-            menu.dispose();
+            //menu.dispose();
             menuPlaying = false;
+            System.out.println("STOP MENU MUSIC");
+
         }
     }
 
     public static void playGameMusic() {
         playMusic();
         gameMusic = true;
+        System.out.println("PLAY GAME MUSIC");
 
         game.setOnCompletionListener(new Music.OnCompletionListener() {
             @Override
@@ -48,6 +52,7 @@ public class GlobalMusic {
 
     public static void stopGameMusic() {
         if(gameMusic)  {
+            System.out.println("PLAY GAME MUSIC");
             gameMusic = false;
             game.stop();
             game.dispose();
@@ -70,6 +75,8 @@ public class GlobalMusic {
         }else{
             game = Assets.manager.get(Assets.MUSIC_5);
         }
+
+        System.out.println("Next song");
 
         lastsong = rand;
 

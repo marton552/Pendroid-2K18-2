@@ -24,7 +24,6 @@ public class AboutStage extends MyStage{
     MyLabel title;
     MyLabel info;
 
-    MyButton story;
     MyButton menu;
 
     public AboutStage(Batch batch, final MyGdxGame game) {
@@ -50,21 +49,9 @@ public class AboutStage extends MyStage{
 
         addActor(info);
 
-        story = new MyButton("Történet", game.getButtonStyle());
-        story.setPosition(getViewport().getWorldWidth() / 2 - story.getWidth() / 2, story.getHeight() * 2 + 20);
-
-        story.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                super.clicked(event, x, y);
-                game.setScreen(new StoryScreen(game));
-            }
-        });
-
-        addActor(story);
 
         menu = new MyButton("Vissza a menübe", game.getButtonStyle());
-        menu.setPosition(getViewport().getWorldWidth() / 2 - story.getWidth() / 2, story.getHeight() + 10);
+        menu.setPosition(getViewport().getWorldWidth() / 2 - menu.getWidth() / 2, menu.getHeight() + 10);
 
         menu.addListener(new ClickListener() {
             @Override
