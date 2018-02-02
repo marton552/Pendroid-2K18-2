@@ -14,7 +14,9 @@ public class Ball extends OneSpriteAnimatedActor{
 
     public Ball(TextureAtlas textureAtlas) {
         super(textureAtlas);
+        setSize(getWidth() / 6, getHeight() / 6);
         setLooping(true);
+        position = new Vector2();
 
     }
     public void setPosition(float x, float y){

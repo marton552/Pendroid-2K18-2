@@ -63,6 +63,10 @@ public class GameStage extends MyStage {
 
         addActor(bg);
 
+        ball = new Ball(Assets.manager.get(Assets.BALL_ATLAS));
+        ball.setPosition(500, 500);
+        addActor(ball);
+
         fan = new Fan();
 
         addListener(new DragListener(){
@@ -139,12 +143,11 @@ public class GameStage extends MyStage {
         //End Game
         //A labda a képernyőn kívül van-e?
 
-        /*if(ball.getX() >= getViewport().getWorldWidth() || ball.getX() + ball.getWidth() <= 0
+        if(ball.getX() >= getViewport().getWorldWidth() || ball.getX() + ball.getWidth() <= 0
                 || ball.getY() + ball.getHeight() < 0 || ball.getY() >= getViewport().getWorldHeight()) {
 
             game.setScreen(new EndScreen(game, SCORE, STARS));
-
-        }*/
+        }
 
 
     }
@@ -166,14 +169,14 @@ public class GameStage extends MyStage {
 
         Vector2 point;
 
-        // SIDES
+        // POINT
         if(rand == 0){ // lefelé fúj
             point = new Vector2(0, -1);
         }else if(rand == 1) { // felfelé fúj
             point = new Vector2(0, 1);
         }else if(rand == 2) { // jobbra fúj
             point = new Vector2(1, 0);
-        }else if(rand == 3) { // balra fúj
+        }else{ // balra fúj
             point = new Vector2(-1, 0);
         }
 
@@ -185,6 +188,11 @@ public class GameStage extends MyStage {
 
 
         //Wind létrehozása
+        Vector2 point2 = new Vector2(0, 200);
+
+        Vector2 dir = point.scl(r.nextInt(300));
+
+
     }
 
     @Override

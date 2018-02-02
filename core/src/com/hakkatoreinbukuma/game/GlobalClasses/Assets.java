@@ -66,6 +66,9 @@ public class Assets {
 
 	public static final AssetDescriptor<Texture> LOGO = new AssetDescriptor<Texture>("logo.png", Texture.class);
 
+	public static final AssetDescriptor<TextureAtlas> BALL_ATLAS = new AssetDescriptor<TextureAtlas>("atlas/ball.atlas", TextureAtlas.class);
+
+
 
 
 	public static void prepare() {
@@ -95,6 +98,8 @@ public class Assets {
 		manager.load(SLIDER_KNOBH);
 
 		manager.load(LOGO);
+
+		manager.load(BALL_ATLAS);
 
 		manager.load(ALEGREYAREGULAR_FONT);
 
